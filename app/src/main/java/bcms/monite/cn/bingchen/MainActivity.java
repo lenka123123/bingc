@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.orhanobut.logger.Logger;
 import com.yanzhenjie.sofia.Sofia;
 
-import bcms.monite.cn.bingchen.utils.AESUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         // 自定义json
         String request = "123456";
         try {
-            aesKey = AESUtils.getAESKey();//
-            //加密后json
-            String encruyptData = AESUtils.aesEncrypt(request, ENCODING, "ECB", aesKey, "");
+//            aesKey = AESUtils.getAESKey();//
+//            //加密后json
+//            String encruyptData = AESUtils.aesEncrypt(request, ENCODING, "ECB", aesKey, "");
 
 
 
