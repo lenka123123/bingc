@@ -16,7 +16,6 @@ public class MyApplication extends Application {
         EasyHttp.init(this);//默认初始化
         initHttp();
 
-
     }
 
     public void initHttp(){
