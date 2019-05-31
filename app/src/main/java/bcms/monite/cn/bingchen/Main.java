@@ -21,6 +21,8 @@ import bcms.monite.cn.bingchen.util.SecureRandomUtil;
  * @date: 2015/8/13 15:12
  */
 public class Main {
+
+
     public static final String clientPrivateKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAKbNojYr8KlqKD/y" +
             "COd7QXu3e4TsrHd4sz3XgDYWEZZgYqIjVDcpcnlztwomgjMj9xSxdpyCc85GOGa0" +
             "lva1fNZpG6KXYS1xuFa9G7FRbaACoCL31TRv8t4TNkfQhQ7e2S7ZktqyUePWYLlz" +
@@ -62,7 +64,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         TreeMap<String, Object> params = new TreeMap<String, Object>();
-        params.put("userid", "152255855");
+        params.put("userid", "123123123");
         params.put("phone", "18965621420");
 
         client(params);
@@ -71,6 +73,8 @@ public class Main {
     }
 
     public static void client(TreeMap<String, Object> params) throws Exception {
+
+
         // 生成RSA签名
         String sign = EncryUtil.handleRSA(params, clientPrivateKey);
         params.put("sign", sign);
@@ -107,7 +111,7 @@ public class Main {
 //            String userid = jsonObj.getString("userid");
 //            String phone = jsonObj.getString("phone");
 
-            System.out.println("解密后的明文:userid:" +  data);
+            System.out.println("解密后的明文:userid:" + data);
 
         } else {
             System.out.println("验签失败");

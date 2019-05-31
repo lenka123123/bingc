@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
      * AES  密实  aesKey
      * <p>
      * 加密前 json
-     * aesKey 对json进行加密   加密后encruyptData
+     *   aesKey 对json进行加密   加密后encruyptData
      * <p>
      * rsaPublicKey对 aesKey进行加密  encryptAesKey
      * <p>

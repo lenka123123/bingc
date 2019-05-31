@@ -8,7 +8,19 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.model.HttpHeaders;
 import com.zhouyou.http.model.HttpParams;
 
+import bcms.monite.cn.bingchen.config.Constants;
+import bcms.monite.cn.bingchen.util.RSA;
+
 public class MyApplication extends Application {
+
+
+    https://blog.csdn.net/kzcming/article/details/80103950
+
+    String baseUrl = "http://bcms.monite.cn:9999";
+    String aesKey =  Constants.aesKey;
+    private final String qichengpublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVZIPpL0+AkYw+jUhgfVi1LqrKvJ16mo4TU8IZzOewyMBTWrCBHdSPLRvpXeSCuN5tW77PTqxP5AC+CVxkYNkddu5DUiAK9mdekjojBgJqxzq2kxx99jXhHaskJzqqlGhJatXq5RoQL7yaO/01xizvoxOMR2EL3Yh5Snp7y2OdlwIDAQAB";
+    private String encryptkey;
+
 
     @Override
     public void onCreate() {
@@ -18,9 +30,15 @@ public class MyApplication extends Application {
 
     }
 
-    public void initHttp(){
+    public void initHttp() {
         //全局设置请求头
         HttpHeaders headers = new HttpHeaders();
+        try {
+            encryptkey = RSA.encrypt( qichengpublicKey,aesKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        headers.put("bc-key", encryptkey);
         //headers.put("User-Agent", SystemInfoUtils.getUserAgent(this, AppConstant.APPID));
         //全局设置请求参数
         HttpParams params = new HttpParams();
@@ -29,7 +47,7 @@ public class MyApplication extends Application {
         //以下设置的所有参数是全局参数,同样的参数可以在请求的时候再设置一遍,那么对于该请求来讲,请求中的参数会覆盖全局参数
         EasyHttp.getInstance()
                 //可以全局统一设置全局URL
-//                .setBaseUrl(Url)//设置全局URL  url只能是域名 或者域名+端口号
+              .setBaseUrl(baseUrl)//设置全局URL  url只能是域名 或者域名+端口号
 
                 // 打开该调试开关并设置TAG,不需要就不要加入该行
                 // 最后的true表示是否打印内部异常，一般打开方便调试错误
