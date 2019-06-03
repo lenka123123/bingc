@@ -1,8 +1,8 @@
-package bcms.monite.cn.bingchen.util;
+package bcms.monite.cn.bingchen.common;
 
 import java.io.UnsupportedEncodingException;
 
-public class Base64  {
+public class Base64 {
     /**
      * Chunk size per RFC 2045 section 6.8.
      *

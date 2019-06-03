@@ -2,19 +2,18 @@ package bcms.monite.cn.bingchen;
 
 import android.util.Log;
 
-import com.alibaba.fastjson.JSONObject;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.orhanobut.logger.Logger;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.charset.UnsupportedCharsetException;
 import java.util.concurrent.TimeUnit;
 
+import bcms.monite.cn.bingchen.common.AESUtils;
 import bcms.monite.cn.bingchen.config.Constants;
-import bcms.monite.cn.bingchen.util.AES;
-import bcms.monite.cn.bingchen.util.User;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -29,7 +28,10 @@ import static android.content.ContentValues.TAG;
 
 public class CustomSignInterceptor implements Interceptor {
     private final Charset UTF8 = Charset.forName("UTF-8");
-    String aesKey =  Constants.aesKey;
+    private JSONObject jsonObject;
+    private String key;
+    private String decryptString;
+
     @Override
     public Response intercept(Chain chain) throws IOException {
 
@@ -64,16 +66,22 @@ public class CustomSignInterceptor implements Interceptor {
 
         if (response.body() != null && response.body().contentType() != null) {
             MediaType mediaType = response.body().contentType();
-            String string = response.body().string();
-            Log.d("MediaType   ", "mediaType =  :  " + mediaType.toString());
-            Log.d("MediaType  ", "string    =  : " + string);
+            String responseData = response.body().string();
+            Log.d("MediaType--------", mediaType.toString());
+            Log.d("MediaType--------", responseData);
 
-            Gson gson = new Gson();
-            User user = gson.fromJson(string, User.class);
-            String data = AES.decryptWithKeyBase64(user.getResponse(), aesKey);
+            try {
+                jsonObject = new JSONObject(responseData);
+                key = jsonObject.getString("response");
+                Log.d("MediaType--------", jsonObject.getString("response"));
+                decryptString = AESUtils.decrypt(key);
 
-            Log.i(TAG, "intercept:==== "+ data);
-            ResponseBody responseBody = ResponseBody.create(mediaType, data);
+                Log.i(TAG, "decryptString==== " + decryptString);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            ResponseBody responseBody = ResponseBody.create(mediaType, decryptString);
             return response.newBuilder().body(responseBody).build();
         } else {
             return response;

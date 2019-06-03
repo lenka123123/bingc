@@ -1,4 +1,4 @@
-package bcms.monite.cn.bingchen.util;
+package bcms.monite.cn.bingchen.common;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;

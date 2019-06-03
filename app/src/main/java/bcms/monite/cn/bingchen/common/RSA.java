@@ -1,4 +1,4 @@
-package bcms.monite.cn.bingchen.util;
+package bcms.monite.cn.bingchen.common;
 
 /*
  --------------------------------------------**********--------------------------------------------
@@ -48,7 +48,7 @@ public class RSA {
     /**
      * 指定key的大小
      */
-    private static int KEYSIZE = 2048;
+    private static int KEYSIZE = 1024;
 
     /**
      * 生成密钥对

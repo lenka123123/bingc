@@ -1,5 +1,6 @@
 package bcms.monite.cn.bingchen;
 
+import android.app.Activity;
 import android.app.Application;
 
 import com.zhouyou.http.EasyHttp;
@@ -8,19 +9,14 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.model.HttpHeaders;
 import com.zhouyou.http.model.HttpParams;
 
+import bcms.monite.cn.bingchen.common.CommonUtil;
+import bcms.monite.cn.bingchen.common.EnCodeUtils;
+import bcms.monite.cn.bingchen.common.TimeUtils;
 import bcms.monite.cn.bingchen.config.Constants;
-import bcms.monite.cn.bingchen.util.RSA;
 
 public class MyApplication extends Application {
 
-
-    https://blog.csdn.net/kzcming/article/details/80103950
-
-    String baseUrl = "http://bcms.monite.cn:9999";
-    String aesKey =  Constants.aesKey;
-    private final String qichengpublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVZIPpL0+AkYw+jUhgfVi1LqrKvJ16mo4TU8IZzOewyMBTWrCBHdSPLRvpXeSCuN5tW77PTqxP5AC+CVxkYNkddu5DUiAK9mdekjojBgJqxzq2kxx99jXhHaskJzqqlGhJatXq5RoQL7yaO/01xizvoxOMR2EL3Yh5Snp7y2OdlwIDAQAB";
-    private String encryptkey;
-
+    String baseUrl = "http://bcms.monite.cn:9999/";
 
     @Override
     public void onCreate() {
@@ -33,21 +29,21 @@ public class MyApplication extends Application {
     public void initHttp() {
         //全局设置请求头
         HttpHeaders headers = new HttpHeaders();
-        try {
-            encryptkey = RSA.encrypt( qichengpublicKey,aesKey);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        headers.put("bc-key", encryptkey);
-        //headers.put("User-Agent", SystemInfoUtils.getUserAgent(this, AppConstant.APPID));
+        headers.put("bc-key", EnCodeUtils.getInstance().getHead());
         //全局设置请求参数
         HttpParams params = new HttpParams();
+        params.put("appVersion", CommonUtil.getVersion(this));
+        params.put("deviceId", CommonUtil.getAndroidId(this));
+        params.put("deviceSystem", "2");
+        params.put("requestId", EnCodeUtils.getInstance().getStringRandom(9));
+        params.put("requestTimestamp", TimeUtils.getNowDate());
+
         //params.put("appId", AppConstant.APPID);
 
         //以下设置的所有参数是全局参数,同样的参数可以在请求的时候再设置一遍,那么对于该请求来讲,请求中的参数会覆盖全局参数
         EasyHttp.getInstance()
                 //可以全局统一设置全局URL
-              .setBaseUrl(baseUrl)//设置全局URL  url只能是域名 或者域名+端口号
+                .setBaseUrl(baseUrl)//设置全局URL  url只能是域名 或者域名+端口号
 
                 // 打开该调试开关并设置TAG,不需要就不要加入该行
                 // 最后的true表示是否打印内部异常，一般打开方便调试错误
@@ -84,8 +80,8 @@ public class MyApplication extends Application {
                 //配置https的域名匹配规则，不需要就不要加入，使用不当会导致https握手失败
                 //.setHostnameVerifier(new SafeHostnameVerifier())
                 //.addConverterFactory(GsonConverterFactory.create(gson))//本框架没有采用Retrofit的Gson转化，所以不用配置
-                .addCommonHeaders(headers)//设置全局公共头
-                .addCommonParams(params)//设置全局公共参数
+//                .addCommonHeaders(headers)//设置全局公共头
+//                .addCommonParams(params)//设置全局公共参数
                 //.addNetworkInterceptor(new NoCacheInterceptor())//设置网络拦截器
                 //.setCallFactory()//局设置Retrofit对象Factory
                 //.setCookieStore()//设置cookie

@@ -5,24 +5,20 @@ import android.os.Environment;
 import java.io.File;
 
 public class Constants {
-    //1234567890123456
-    public static String aesKey = "1234567890123456";
+                     //1234567890123456
+    public static   String aesKey = "1234567890123456";
 
     public static final String APP_ID = "wxd670b2e2b07f5175";
     public static String BASE_URL = "http://api.tyitop.com/";
     //public static String BASE_URL = "http://192.168.8.222/";
 
     public static final String IMAGE_DIR = Environment.getExternalStorageDirectory() + File.separator + "Android截屏";
-    public static final String SCREEN_SHOT = "screenshot.png";
-    /**
-     * 短信
-     */
+    public static final String SCREEN_SHOT ="screenshot.png";
+    /** 短信*/
     //获取短信验证码
     public static String GET_CODE_URL = "v1/register/get-code";
 
-    /**
-     * 登陆注册
-     */
+    /** 登陆注册*/
     //app用户登录
     public static String CHECK_LOGIN_URL = "v1/login/check-login";
     //用户注册
@@ -37,9 +33,7 @@ public class Constants {
     //判断是否领过红包
     public static String INDEX_IS_SIGNIN = "v1/index/is-signin";
 
-    /**
-     * 个人中心
-     */
+    /** 个人中心*/
     //修改用户昵称（普通用户营养师通用）
     public static String UCENTER_ALTER_NAME_URL = "/v1/ucenter/alter-name";
     //获取个人中心数据
@@ -69,9 +63,7 @@ public class Constants {
     //修改昵称
     public static String UCENTER_ALTER_USERNAME_URL = "v1/ucenter/alter-username";
 
-    /**
-     * 地址管理
-     */
+    /** 地址管理*/
     //获取用户地址列表
     public static String ADDRESS_INDEX_URL = "v1/address/index";
     //获取省市区
@@ -92,9 +84,10 @@ public class Constants {
     public static String ORDER_CONFIRM = "v1/retail/order-confirm";
 
 
-    /**
-     * 商品
-     */
+
+
+
+    /** 商品*/
     //商品一级分类
     public static String TOP_CATEGORY_URL = "v1/goods/top-category";
     //商品二三级分类
@@ -104,10 +97,10 @@ public class Constants {
     //智慧商品详细信息
     public static String GOODS_DETAIL_INFO = "v1/retail/goods-detail-info";
     //商品订单确认页面数据显示接口
-    public static String ORDER_SHOW = "v1/cart/order-show";
+    public static String ORDER_SHOW= "v1/cart/order-show";
     //商品列表
     public static String GOODS_LIST_URL = "v1/goods/list";
-    //支付成功
+  //支付成功
     public static String RETAIL_PAY_RESULT = "v1/retail/pay-result";
 
     //商品展示
@@ -119,9 +112,7 @@ public class Constants {
     //商品评价列表页接口
     public static String GOODS_EVAL_LIST_URL = "v1/goods/eval-list";
 
-    /**
-     * 收藏
-     */
+    /** 收藏*/
     //取消收藏（商品、店铺、营养师、文章）
     public static String FAVORITES_DELETE_URL = "v1/favorites/delete";
     //添加收藏（商品、店铺、营养师、文章）
@@ -129,9 +120,7 @@ public class Constants {
     //获取收藏列表
     public static String FAVORITES_LIKE_LIST_URL = "v1/favorites/like-list";
 
-    /**
-     * 首页
-     */
+    /** 首页*/
     //首页头部（banner和公告）数据接口
     public static String INDEX_HEAD_DATA_URL = "v1/index/head-data";
     //首页主体数据
@@ -139,9 +128,7 @@ public class Constants {
     //新首页
     public static String INDEX_HEAD_INDEX = "v1/index/index";
 
-    /**
-     * 营养师
-     */
+    /** 营养师*/
     //问服务首页（营养师筛选页面）接口
     public static String DIETITIAN_INDEX_URL = "v1/dietitian/index";
     //获取营养师擅长领域
@@ -179,7 +166,7 @@ public class Constants {
     //我的收益-提现明细
     public static String DIETITIAN_WITHDRAW_CASH_LOG_URL = "v1/dietitian/withdraw-cash-log";
     //营养师服务订单拒绝服务
-    public static String DIETITIAN_REFUSE_SERVICE_URL = "v1/dietitian/refuse-service";
+      public static String DIETITIAN_REFUSE_SERVICE_URL = "v1/dietitian/refuse-service";
     //申请解绑
 
     public static String UCENTER_UNTIE = "v1/ucenter/untie";
@@ -195,13 +182,11 @@ public class Constants {
     public static String ARTICLE_RETAIL_EVAL_MORE = "v1/retail/eval-more";
     //获取达事隐私协议
     public static String INTEGRAL_XIEYI = "v1/integral/xieyi";
-    // 增值护照显示页接口
-    public static String INTERGRAL_HUZHAO_SHOW = "v1/integral/huzhao-show";
-    //申请护照接口
+   // 增值护照显示页接口
+   public static String INTERGRAL_HUZHAO_SHOW = "v1/integral/huzhao-show";
+   //申请护照接口
     public static String INTERGRAL_HUZHAO = "v1/integral/huzhao";
-    /**
-     * 文章
-     */
+    /** 文章*/
     //获取文章详情页
     public static String ARTICLE_CONTENT_URL = "v1/article/content";
     //获取文章列表
@@ -213,15 +198,11 @@ public class Constants {
     //获取文章评论列表
     public static String ARTICLE_GET_EVAL_URL = "v1/article/get-eval";
 
-    /**
-     * 店铺
-     */
+    /** 店铺*/
     //店铺主页接口
     public static String STORE_INDEX_URL = "v1/store/index";
 
-    /**
-     * 连锁门店（营养街区）
-     */
+    /** 连锁门店（营养街区）*/
     //连锁门店列表页
     public static String STREET_LIST_URL = "v1/street/list";
     //连锁门店详情页
@@ -229,21 +210,19 @@ public class Constants {
     //连锁门店活动内容页
     public static String STREET_ACTIVE_CONTENT_URL = "v1/street/active-content";
 
-    /**
-     * 积分商城
-     */
+    /** 积分商城*/
     //用户签到
     public static String INTEGRAL_SIGN_IN_URL = "v1/integral/sign-in";
     //获取用户积分记录
     public static String INTEGRAL_RECORD_URL = "v1/integral/integral-record";
     //积分商品详情页
     public static String INTEGRAL_GOODS_DETAIL_URL = "v1/integral/goods-detail";
-    //个人中心社交链
-    public static String ASSETS_INDEX = "v1/assets/index";
+   //个人中心社交链
+    public  static String ASSETS_INDEX  = "v1/assets/index";
     //意见反馈
-    public static String FEEDBACK = "v1/ucenter/add-feedback";
+    public  static String FEEDBACK  = "v1/ucenter/add-feedback";
     //历史反馈
-    public static String HISTORY_FEEDBACK = "v1/ucenter/history-feedback";
+    public  static String HISTORY_FEEDBACK  = "v1/ucenter/history-feedback";
 
     //积分商城首页
     public static String INTEGRAL_INDEX_URL = "v1/integral/index";
@@ -260,9 +239,7 @@ public class Constants {
     //获取积分规则
     public static String INTEGRAL_RULE_URL = "v1/integral/rule";
 
-    /**
-     * 其他
-     */
+    /** 其他*/
     //上传多图片接口
     public static String OTHER_UPLOAD_FILE_MORE_URL = "v1/other/upload-file-more";
     //单图片上传通用
@@ -272,9 +249,7 @@ public class Constants {
     //设置开关
     public static String OTHER_ON_OFF_URL = "v1/other/on-off";
 
-    /**
-     * 订单（商品）
-     */
+    /** 订单（商品）*/
     //获取评价订单商品列表
     public static String ORDER_EVAL_LIST_URL = "v1/order/order-eval-list";
     //商品订单评价
@@ -301,9 +276,9 @@ public class Constants {
     public static String ORDER_PAY_URL = "v1/order/order-pay";
 
 
-    /**
-     * 购物车
-     */
+
+
+    /** 购物车*/
     //商品加入购物车
     public static String CART_ADD_GOODS_URL = "v1/cart/add-goods";
     //购物车页面
@@ -319,9 +294,7 @@ public class Constants {
     //商品订单确认页面数据显示接口
     public static String GO_CART_ORDER_SHOW = "v1/order/go-order-show";
 
-    /**
-     * 订单（营养师）
-     */
+    /** 订单（营养师）*/
     //确认务（接受用户申请）
     public static String DIETITIAN_ACCEPT_SERVICE_URL = "v1/dietitian/accept-service";
     //查看服务订单评价
@@ -331,14 +304,10 @@ public class Constants {
     //服务订单退款详情
     public static String DIETITIAN_REFUND_DETAIL_URL = "v1/dietitian/refund-detail";
 
-    /**
-     * 融云即时聊天
-     */
+    /** 融云即时聊天*/
     public static String IM_GET_TOKEN_URL = "v1/im/get-token";
 
-    /**
-     * 聚实惠
-     */
+    /** 聚实惠*/
     //订单详情
     public static String DISCOUNT_ORDER_STATE_DETAIL_URL = "v1/discount/order-state-detail";
     //聚食惠首页
@@ -356,9 +325,7 @@ public class Constants {
     //立即支付--直接跳转到支付类型选择
     public static String DISCOUNT_PAY_ORDER_URL = "v1/discount/pay-order";
 
-    /**
-     * 入驻（商家or服务）
-     */
+    /** 入驻（商家or服务）*/
     //商家入驻申请
     public static String JOIN_BUSINESS_URL = "v1/join/business";
     //商家入驻 -商家展示数据
@@ -367,21 +334,17 @@ public class Constants {
     public static String JOIN_SERVICE_URL = "v1/join/service";
     //营养师入驻协议
     public static String JOIN_XIE_YI_URL = "v1/join/xieyi";
-    //智慧零售入住
-    public static String JOIN_RETAIL = "v1/join/retail";
+      //智慧零售入住
+      public static String JOIN_RETAIL = "v1/join/retail";
 
 
-    /**
-     * 消息通知
-     */
+    /** 消息通知*/
     //系统通知
     public static String UCENTER_GET_MY_NOTICE_URL = "v1/ucenter/get-my-notice";
     //服务消息
     public static String UCENTER_GET_SERVICE_NOTICE_URL = "v1/ucenter/get-service-notice";
 
-    /**
-     * 社交资产
-     */
+    /** 社交资产*/
     //交易市场数据（买进卖出）
     public static String ASSETS_RELEASE_LIST_URL = "v1/assets/release-list";
     //我的交易记录
@@ -401,17 +364,13 @@ public class Constants {
     //删除发布记录
     public static String ASSETS_DEL_RELEASE_URL = "v1/assets/del-release";
 
-    /**
-     * 余额充值
-     */
+    /** 余额充值 */
     //会员充值
     public static String UCENTER_RECHARGE_URL = "v1/ucenter/recharge";
     //余额明细
     public static String UCENTER_MONEY_DETAIL_URL = "v1/ucenter/money-detail";
 
-    /**
-     * 智慧零售
-     */
+    /** 智慧零售 */
     //获取店铺信息
     public static String RETAIL_SHOP_URL = "v1/retail/shop";
     //智慧零售按钮页面跳转
@@ -427,32 +386,31 @@ public class Constants {
     //账号提现页面
     public static String RETAIL_WITHDRAW = "v1/retail/withdraw";
     //处理账户提现
-    public static String RETAIL_DO_WITHDRAW = "v1/retail/do-withdraw";
-    //智慧零售添加提现银行卡
-    public static String RETAIL_ADD_BANKCARD = "v1/retail/add-bankcard";
-    //提现账号列表接口
-    public static String RETAIL_BANK_LIST = "v1/retail/bank-list";
+     public static String RETAIL_DO_WITHDRAW = "v1/retail/do-withdraw";
+   //智慧零售添加提现银行卡
+     public static String RETAIL_ADD_BANKCARD = "v1/retail/add-bankcard";
+   //提现账号列表接口
+     public static String RETAIL_BANK_LIST = "v1/retail/bank-list";
     //提现明细
-    public static String RETAIL_WITHDRAW_RECORD = "v1/retail/withdraw-record";
-    //创客二维码接口
-    public static String MAKE_QRCODE_API = "v1/retail/make-qrcode-api";
+     public static String RETAIL_WITHDRAW_RECORD= "v1/retail/withdraw-record";
+     //创客二维码接口
+      public static String MAKE_QRCODE_API= "v1/retail/make-qrcode-api";
     //	创客管理
-    public static String RETAIL_MAKER_LIST = "/v1/retail/maker-list";
-    //创客订单
-    public static String MAKER_ORDER_API = "/v1/retail/maker-order-api";
-    //店铺会员管理
-    public static String RETAIL_STORE_USER = "v1/retail/store-user";
-    //店铺管理界面订单管理（线上订单、自提订单） 商家管理界面订单管理（跟进订单）
-    public static String RETAIL_STORE_ORDER = "v1/retail/store-order";
-    // 标记跟进
-    public static String RETAIL_STORE_FOLLOW = "v1/retail/store-order-follow";
+     public static String RETAIL_MAKER_LIST= "/v1/retail/maker-list";
+     //创客订单
+     public static String MAKER_ORDER_API= "/v1/retail/maker-order-api";
+     //店铺会员管理
+     public static String RETAIL_STORE_USER= "v1/retail/store-user";
+     //店铺管理界面订单管理（线上订单、自提订单） 商家管理界面订单管理（跟进订单）
+     public static String RETAIL_STORE_ORDER= "v1/retail/store-order";
+     // 标记跟进
+     public static String RETAIL_STORE_FOLLOW= "v1/retail/store-order-follow";
     // 确认自提
-    public static String RETAIL_SELF_LIFTING = "v1/retail/self-lifting";
+    public static String RETAIL_SELF_LIFTING= "v1/retail/self-lifting";
 
 
-    /**
-     * 字符串常量
-     */
+
+    /** 字符串常量*/
     public static final String KEY = "ysd3w6ei2asd8h423jsa2sdf"; //秘钥
     public static final String ANDROID = "ANDROID";
     public static final String TOKEN = "token";
@@ -616,9 +574,7 @@ public class Constants {
     public static final String LOGIN_FAILURE_MESSAGE = "登录失败";
     public static final String NET_WORK_ERROR = "网络请求出错，请检查您的网络";
 
-    /**
-     * 数值常量
-     */
+    /** 数值常量*/
     public static final int TAB_POSITION_HOME = 0;           //首页位置
     public static final int TAB_POSITION_ZB = 1;             //直播室位置
     public static final int TAB_POSITION_SHOP_CART = 2;      //购物车位置
