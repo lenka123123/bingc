@@ -75,8 +75,9 @@ public class CustomSignInterceptor implements Interceptor {
                 key = jsonObject.getString("response");
                 Log.d("MediaType--------", jsonObject.getString("response"));
                 decryptString = AESUtils.decrypt(key);
-
                 Log.i(TAG, "decryptString==== " + decryptString);
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

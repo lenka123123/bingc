@@ -16,12 +16,21 @@ import bcms.monite.cn.bingchen.config.Constants;
 
 public class MyApplication extends Application {
 
+
+    // https://blog.csdn.net/kzcming/article/details/80103950
+
     String baseUrl = "http://bcms.monite.cn:9999/";
+    String aesKey = Constants.aesKey;
+    private final String qichengpublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVZIPpL0+AkYw+jUhgfVi1LqrKvJ16mo4TU8IZzOewyMBTWrCBHdSPLRvpXeSCuN5tW77PTqxP5AC+CVxkYNkddu5DUiAK9mdekjojBgJqxzq2kxx99jXhHaskJzqqlGhJatXq5RoQL7yaO/01xizvoxOMR2EL3Yh5Snp7y2OdlwIDAQAB";
+    private String encryptkey;
+    public static String aEsKey;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
         EasyHttp.init(this);//默认初始化
+        aEsKey = EnCodeUtils.getInstance().getStringRandom(16);
         initHttp();
 
     }
@@ -44,7 +53,7 @@ public class MyApplication extends Application {
         EasyHttp.getInstance()
                 //可以全局统一设置全局URL
                 .setBaseUrl(baseUrl)//设置全局URL  url只能是域名 或者域名+端口号
-
+                .addCommonHeaders(headers)
                 // 打开该调试开关并设置TAG,不需要就不要加入该行
                 // 最后的true表示是否打印内部异常，一般打开方便调试错误
                 .debug("EasyHttp", true)

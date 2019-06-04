@@ -16,6 +16,8 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import bcms.monite.cn.bingchen.MyApplication;
+
 /**
  * <p>
  * 参数加密解密工具，不要和DESEncrypt弄混了
@@ -29,9 +31,10 @@ public class AESUtils {
 
     private static final String AES = "AES";
 
-    public static final String CRYPT_KEY = "b7Rr8Zlj8I9U44TP";
+//    public static final String CRYPT_KEY = MyApplication.aEsKey; //"b7Rr8Zlj8I9U44TP";
 
     private static final String IV_STRING = "dMitHORyqbeYVE0o";
+
 
     /**
      * 加密
@@ -46,7 +49,7 @@ public class AESUtils {
             byte[] byteContent = content.getBytes("UTF-8");
             // 注意，为了能与 iOS 统一
             // 这里的 key 不可以使用 KeyGenerator、SecureRandom、SecretKey 生成
-            byte[] enCodeFormat = CRYPT_KEY.getBytes();
+            byte[] enCodeFormat = MyApplication.aEsKey.getBytes();
             SecretKeySpec secretKeySpec = new SecretKeySpec(enCodeFormat, AES);
             byte[] initParam = IV_STRING.getBytes();
             IvParameterSpec ivParameterSpec = new IvParameterSpec(initParam);
@@ -57,12 +60,12 @@ public class AESUtils {
             // 同样对加密后数据进行 base64 编码
         } catch (IOException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
 
-            Log.i("Exception,content", "encrypt: " +content);
+            Log.i("Exception,content", "encrypt: " + content);
             Log.i("Exception,content", "encrypt: " + e.getStackTrace());
         }
 
 
-        return new String(Base64.encode(encryptedBytes,Base64.DEFAULT)  );
+        return new String(Base64.encode(encryptedBytes, Base64.DEFAULT));
     }
 
     /**
@@ -75,8 +78,8 @@ public class AESUtils {
     public static String decrypt(String content) {
         // base64 解码
         try {
-            byte[] encryptedBytes = Base64.decode(content,Base64.DEFAULT);
-            byte[] enCodeFormat = CRYPT_KEY.getBytes();
+            byte[] encryptedBytes = Base64.decode(content, Base64.DEFAULT);
+            byte[] enCodeFormat = MyApplication.aEsKey.getBytes();
             SecretKeySpec secretKey = new SecretKeySpec(enCodeFormat, AES);
             byte[] initParam = IV_STRING.getBytes();
             IvParameterSpec ivParameterSpec = new IvParameterSpec(initParam);
@@ -87,7 +90,7 @@ public class AESUtils {
             return new String(result, "UTF-8");
         } catch (IOException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
 
-            Log.i("Exception,content", "encrypt: " +content);
+            Log.i("Exception,content", "encrypt: " + content);
             Log.i("Exception,content", "encrypt: " + e.getStackTrace());
         }
         return null;

@@ -2,6 +2,8 @@ package bcms.monite.cn.bingchen.common;
 
 import java.util.Random;
 
+import bcms.monite.cn.bingchen.MyApplication;
+
 public class EnCodeUtils {
     private static EnCodeUtils instance = new EnCodeUtils();
     private String singleAESKey = "";
@@ -28,7 +30,7 @@ public class EnCodeUtils {
 
     public String getHead() {
         try {
-            return RSA.encrypt(getAESKey(), publicKey);
+            return RSA.encrypt(MyApplication.aEsKey, publicKey);
         } catch (Exception e) {
             e.printStackTrace();
         }
