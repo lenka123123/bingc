@@ -38,7 +38,8 @@
                     android:id="@+id/tab_text_home"
                     style="@style/TextView_Style_Main_Tab"
                     android:layout_below="@id/tab_img_home"
-                    android:text="个人中心" />
+                    android:text="首页"
+                    android:textSize="16sp" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -56,8 +57,10 @@
                 <TextView
                     android:id="@+id/tab_text_zb"
                     style="@style/TextView_Style_Main_Tab"
-                    android:layout_below="@id/tab_img_zb"
-                    android:text="个人中心" />
+                    android:layout_below="@+id/tab_img_zb"
+                    android:layout_marginTop="1dp"
+                    android:text="踪迹"
+                    android:textSize="16sp" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -69,6 +72,7 @@
             <RelativeLayout style="@style/RelativeLayout_Main_Child">
 
                 <ImageView
+                    android:padding="10dp"
                     android:id="@+id/tab_img_shop_cart"
                     style="@style/ImageView_Style_Main_Tab" />
 
@@ -76,7 +80,11 @@
                     android:id="@+id/tab_text_shop_cart"
                     style="@style/TextView_Style_Main_Tab"
                     android:layout_below="@id/tab_img_shop_cart"
-                    android:text="个人中心" />
+                    android:layout_centerHorizontal="true"
+                    android:text="中间"
+                    android:visibility="gone"
+                    android:layout_marginTop="1dp"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_shop_cart_point"
@@ -100,13 +108,33 @@
                 <TextView
                     android:id="@+id/tab_text_ucenter"
                     style="@style/TextView_Style_Main_Tab"
-
-                    android:text="个人中心" />
+                    android:text="消息"
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/tab_img_ucenter"
                     style="@style/ImageView_Style_Main_Tab"
                     android:layout_below="@id/tab_text_ucenter" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_me"
+            style="@style/RelativeLayout_Main"
+            android:layout_marginTop="2dp">
+
+            <RelativeLayout style="@style/RelativeLayout_Main_Child">
+
+                <TextView
+                    android:id="@+id/tab_text_me"
+                    style="@style/TextView_Style_Main_Tab"
+                    android:text="我的"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/tab_img_me"
+                    style="@style/ImageView_Style_Main_Tab"
+                    android:layout_below="@id/tab_text_me" />
             </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>

@@ -1,23 +1,16 @@
 package bcms.monite.cn.bingchen.main;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import bcms.monite.cn.bingchen.R;
 
-public class UCenterFragment extends BaseFragment {
+public class ThirdFragment extends BaseFragment {
 
     @Override
     public int createView() {
         TextView textView=new TextView(getActivity());
         textView.setText("===");
-        return R.layout.activity_main;
+        return R.layout.main_third_fragment;
     }
 
     @Override

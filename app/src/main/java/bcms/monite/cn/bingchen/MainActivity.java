@@ -1,5 +1,6 @@
 package bcms.monite.cn.bingchen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import bcms.monite.cn.bingchen.common.BaseBean;
 import bcms.monite.cn.bingchen.common.BaseNetListener;
 import bcms.monite.cn.bingchen.common.NetUtils;
 import bcms.monite.cn.bingchen.common.RSA;
+import bcms.monite.cn.bingchen.main.HomeActivity;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
@@ -31,12 +33,13 @@ public class MainActivity extends AppCompatActivity implements BaseNetListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startActivity(new Intent(this, HomeActivity.class));
 
-        TreeMap<String, Object> paramsSingle = new TreeMap<String, Object>();
-        paramsSingle.put("mobilePhone", "18851032654");
-
-        NetUtils.getInstance().post("/my/login/getLoginVerifyCode.action",
-                paramsSingle, this, "getLoginVerifyCodewwwwwwww");
+//        TreeMap<String, Object> paramsSingle = new TreeMap<String, Object>();
+//        paramsSingle.put("mobilePhone", "18851032654");
+//
+//        NetUtils.getInstance().post("/my/login/getLoginVerifyCode.action",
+//                paramsSingle, this, "getLoginVerifyCodewwwwwwww");
 
 
     }

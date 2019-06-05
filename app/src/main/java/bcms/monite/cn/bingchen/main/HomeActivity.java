@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -33,16 +34,16 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
 
     @BindColor(R.color.color77)
     int colorUnSelect;
-    @BindColor(R.color.colorPrimary)
+    @BindColor(R.color.black)
     int colorSelect;
 
-    @BindViews({R.id.tab_img_home, R.id.tab_img_zb, R.id.tab_img_shop_cart, R.id.tab_img_ucenter})
+    @BindViews({R.id.tab_img_home, R.id.tab_img_zb, R.id.tab_img_shop_cart, R.id.tab_img_ucenter, R.id.tab_img_me})
     ImageView[] mImageViews;
 
-    @BindViews({R.id.tab_text_home, R.id.tab_text_zb, R.id.tab_text_shop_cart, R.id.tab_text_ucenter, R.id.tv_shop_cart_point})//购物车小红点
+    @BindViews({R.id.tab_text_home, R.id.tab_text_zb, R.id.tab_text_shop_cart, R.id.tab_text_ucenter, R.id.tab_text_me, R.id.tv_shop_cart_point})//购物车小红点
             TextView[] mTextViews;
 
-    @BindViews({R.id.main_home, R.id.main_zb, R.id.main_shop_cart, R.id.main_ucenter})
+    @BindViews({R.id.main_home, R.id.main_zb, R.id.main_shop_cart, R.id.main_ucenter, R.id.main_me})
     RelativeLayout mRelativeLayout[];
 
     @BindView(R.id.view_pager)
@@ -87,29 +88,32 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         if (R.id.main_home == v.getId()) {
             mViewPager.setCurrentItem(Constants.TAB_POSITION_HOME, false);
         } else if (R.id.main_zb == v.getId()) {
-            mViewPager.setCurrentItem(Constants.TAB_POSITION_ZB, false);
+            mViewPager.setCurrentItem(Constants.TAB_POSITION_ZJ, false);
         } else if (R.id.main_shop_cart == v.getId()) {
-            mViewPager.setCurrentItem(Constants.TAB_POSITION_SHOP_CART, false);
+            mViewPager.setCurrentItem(Constants.TAB_POSITION_PZ, false);
         } else if (R.id.main_ucenter == v.getId()) {
-            mViewPager.setCurrentItem(Constants.TAB_POSITION_UCENTER, false);
+            mViewPager.setCurrentItem(Constants.TAB_POSITION_XX, false);
+        } else if (R.id.main_me == v.getId()) {
+            mViewPager.setCurrentItem(Constants.TAB_POSITION_ME, false);
         }
     }
 
 
-
     private void initMainViewPager() {
         mRelativeLayout[Constants.TAB_POSITION_HOME].setOnClickListener(this);
-        mRelativeLayout[Constants.TAB_POSITION_ZB].setOnClickListener(this);
-        mRelativeLayout[Constants.TAB_POSITION_SHOP_CART].setOnClickListener(this);
-        mRelativeLayout[Constants.TAB_POSITION_UCENTER].setOnClickListener(this);
+        mRelativeLayout[Constants.TAB_POSITION_ZJ].setOnClickListener(this);
+        mRelativeLayout[Constants.TAB_POSITION_PZ].setOnClickListener(this);
+        mRelativeLayout[Constants.TAB_POSITION_XX].setOnClickListener(this);
+        mRelativeLayout[Constants.TAB_POSITION_ME].setOnClickListener(this);
 
-        mFragment.add(new UCenterFragment());
-        mFragment.add(new UCenterFragment());
-        mFragment.add(new UCenterFragment());
-        mFragment.add(new UCenterFragment());
+        mFragment.add(new FirstFragment());
+        mFragment.add(new SecondFragment());
+        mFragment.add(new ThirdFragment());
+        mFragment.add(new FourthFragment());
+        mFragment.add(new FifthFragment());
 
         mViewPager.setAdapter(fragmentPagerAdapter);
-        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setOffscreenPageLimit(5);
         mViewPager.addOnPageChangeListener(this);
         changeTextViewColor();
         changeSelectedTabState(getIntent().getIntExtra(Constants.TAB_POSITION, 0));
@@ -125,7 +129,6 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -134,7 +137,6 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         }
 
     }
-
 
 
     @Override
@@ -156,32 +158,38 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private void changeTextViewColor() {
-        mImageViews[0].setBackgroundResource(R.drawable.tab_button_center);
+//        mImageViews[0].setBackgroundResource(R.drawable.tab_button_center);
         mTextViews[0].setTextColor(colorUnSelect);
 
-        mImageViews[1].setBackgroundResource(R.drawable.tab_button_center);
+//        mImageViews[1].setBackgroundResource(R.drawable.tab_button_center);
         mTextViews[1].setTextColor(colorUnSelect);
 
         mImageViews[2].setBackgroundResource(R.drawable.tab_button_center);
-        mTextViews[2].setTextColor(colorUnSelect);
+        mTextViews[2].setVisibility(View.GONE);
 
-        mImageViews[3].setBackgroundResource(R.drawable.tab_button_center);
+//        mImageViews[3].setBackgroundResource(R.drawable.tab_button_center);
         mTextViews[3].setTextColor(colorUnSelect);
+
+        mTextViews[4].setTextColor(colorUnSelect);
     }
 
     private void changeSelectedTabState(int position) {
+        Log.i(TAG, "changeSelectedTabState: " + position);
         if (position == 0) {
             mTextViews[0].setTextColor(colorSelect);
-            mImageViews[0].setBackgroundResource(R.drawable.tab_button_center);
+//             mImageViews[0].setBackgroundResource(R.drawable.tab_button_center);
         } else if (position == 1) {
             mTextViews[1].setTextColor(colorSelect);
-            mImageViews[1].setBackgroundResource(R.drawable.tab_button_center);
+//            mImageViews[1].setBackgroundResource(R.drawable.tab_button_center);
         } else if (position == 2) {
-            mTextViews[2].setTextColor(colorSelect);
+            mTextViews[2].setVisibility(View.GONE);
             mImageViews[2].setBackgroundResource(R.drawable.tab_button_center);
         } else if (position == 3) {
             mTextViews[3].setTextColor(colorSelect);
-            mImageViews[3].setBackgroundResource(R.drawable.tab_button_center);
+//            mImageViews[3].setBackgroundResource(R.drawable.tab_button_center);
+        } else if (position == 4) {
+            mTextViews[4].setTextColor(colorSelect);
+//            mImageViews[3].setBackgroundResource(R.drawable.tab_button_center);
         }
     }
 

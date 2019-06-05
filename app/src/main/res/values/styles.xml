@@ -35,20 +35,11 @@
     <style name="TextView_Style_Main_Tab">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#abadbb</item>
+        <item name="android:textColor">@color/color77</item>
         <item name="android:textSize">@dimen/text_size_style_three</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginTop">2dp</item>
     </style>
-
-
-
-
-
-
-
-
-
 
 
 </resources>
