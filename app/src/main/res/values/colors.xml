@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="item_gray_line">#F5F7F9</color>
+
+
+
+
     <color name="colorToolBarBackground">#FFFFFF</color>
     <color name="transparent">#55ff</color>
     <color name="transparent1">#33000000</color>
