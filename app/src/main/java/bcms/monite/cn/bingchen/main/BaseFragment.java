@@ -22,8 +22,7 @@ public abstract class BaseFragment extends Fragment {
         View view = inflater.inflate(createView(), container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        initToolBar();
-        initViews();
+        initViews( );
         loadData();
         return view;
     }
@@ -40,11 +39,11 @@ public abstract class BaseFragment extends Fragment {
         unbinder.unbind();
     }
 
-    public void initToolBar() {}
+
 
     public abstract int createView();
 
-    public abstract void initViews();
+    public abstract void initViews( );
 
     public abstract void loadData();
 

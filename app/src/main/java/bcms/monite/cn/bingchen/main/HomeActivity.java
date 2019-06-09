@@ -1,6 +1,5 @@
 package bcms.monite.cn.bingchen.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +20,7 @@ import java.util.List;
 
 import bcms.monite.cn.bingchen.R;
 import bcms.monite.cn.bingchen.config.Constants;
+import bcms.monite.cn.bingchen.home.FirstFragment;
 import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -116,8 +115,10 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.addOnPageChangeListener(this);
         changeTextViewColor();
-        changeSelectedTabState(getIntent().getIntExtra(Constants.TAB_POSITION, 0));
-        mViewPager.setCurrentItem(getIntent().getIntExtra(Constants.TAB_POSITION, 0), false);
+
+        //保存历史页面
+//        changeSelectedTabState(getIntent().getIntExtra(Constants.TAB_POSITION, 0));
+//        mViewPager.setCurrentItem(getIntent().getIntExtra(Constants.TAB_POSITION, 0), false);
 
 
     }
@@ -132,9 +133,9 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Constants.LOGIN_RESULT_CODE) {
-
-        }
+//        if (resultCode == Constants.LOGIN_RESULT_CODE) {
+//
+//        }
 
     }
 

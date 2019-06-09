@@ -7,12 +7,14 @@ import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
+import java.lang.reflect.Type;
 import java.util.TreeMap;
 
+import bcms.monite.cn.bingchen.home.model.HomeDataList;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
-public class NetUtils {
+public class NetUtils<T> {
 
     private static NetUtils instance = new NetUtils();
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -53,8 +55,44 @@ public class NetUtils {
                         if (data.getCode().equals("200")) {
                             listener.success(flag, data);
                         } else {
-                            listener.fail(flag, data.getMessage());
+                            // TODO: 2019/6/9 0009
+                            listener.fail(flag,  "");
                         }
+                    }
+                });
+    }
+
+
+    public void postObj(String url, TreeMap paramsMap, final BaseNetListener listener,
+                        final String flag, final T t) {
+
+        TreeMap<String, Object> commonParams = new TreeMap<String, Object>();
+        commonParams.put("request", AESUtils.encrypt(gson.toJson(paramsMap)));
+        final RequestBody requestBody = RequestBody.create(JSON, gson.toJson(commonParams));
+
+        EasyHttp.post(url)
+                .readTimeOut(30 * 1000)//局部定义读超时
+                .writeTimeOut(30 * 1000)
+                .connectTimeout(30 * 1000)
+
+                .requestBody(requestBody)
+                .timeStamp(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        listener.fail(flag, "");
+
+                    }
+
+                    @Override
+                    public void onSuccess(String response) {
+                      T data =   gson.fromJson(response, (Class<T>) t);
+                        listener.success(flag,   data);
+//                        if (data.getCode().equals("200")) {
+//                            listener.success(flag, data);
+//                        } else {
+//                         listener.fail(flag, data.getMessage());
+//                        }
                     }
                 });
     }

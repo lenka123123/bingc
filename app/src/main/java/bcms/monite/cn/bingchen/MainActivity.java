@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements BaseNetListener {
     }
 
     @Override
-    public void success(String flag, BaseBean data) {
+    public void success(String flag, Object data) {
         Log.i("ApiException", "success: " + flag);
         Log.i("ApiException", "success: " + data);
     }

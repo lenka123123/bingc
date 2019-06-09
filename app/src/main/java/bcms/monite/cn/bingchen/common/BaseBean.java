@@ -1,6 +1,7 @@
 package bcms.monite.cn.bingchen.common;
 
-public class BaseBean {
+
+public class BaseBean<T> {
 
 
     /**
@@ -9,7 +10,7 @@ public class BaseBean {
      */
 
     private String code;
-    private String message;
+    private T data;
 
     public String getCode() {
         return code;
@@ -19,11 +20,11 @@ public class BaseBean {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public Object getData() {
+        return data;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setData(T data) {
+        this.data = data;
     }
 }

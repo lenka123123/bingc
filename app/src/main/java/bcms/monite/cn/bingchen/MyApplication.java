@@ -19,8 +19,7 @@ public class MyApplication extends Application {
 
     // https://blog.csdn.net/kzcming/article/details/80103950
 
-    String baseUrl = "http://bcms.monite.cn:9999/";
-    String aesKey = Constants.aesKey;
+    private final  String baseUrl = "http://bcms.monite.cn:9999/";
     private final String qichengpublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVZIPpL0+AkYw+jUhgfVi1LqrKvJ16mo4TU8IZzOewyMBTWrCBHdSPLRvpXeSCuN5tW77PTqxP5AC+CVxkYNkddu5DUiAK9mdekjojBgJqxzq2kxx99jXhHaskJzqqlGhJatXq5RoQL7yaO/01xizvoxOMR2EL3Yh5Snp7y2OdlwIDAQAB";
     private String encryptkey;
     public static String aEsKey;
