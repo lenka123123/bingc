@@ -75,7 +75,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/x1"
-        android:background="@color/transparent1" />
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_head"

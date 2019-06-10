@@ -109,7 +109,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         mFragment.add(new SecondFragment());
         mFragment.add(new ThirdFragment());
         mFragment.add(new FourthFragment());
-        mFragment.add(new FifthFragment());
+        mFragment.add(new bcms.monite.cn.bingchen.me.FifthFragment());
 
         mViewPager.setAdapter(fragmentPagerAdapter);
         mViewPager.setOffscreenPageLimit(5);

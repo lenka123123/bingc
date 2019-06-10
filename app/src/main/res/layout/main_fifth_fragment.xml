@@ -3,16 +3,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y426">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y290"
+            android:background="@drawable/common" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y50"
+            android:layout_marginTop="@dimen/y25"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/x40"
+            android:paddingRight="@dimen/x40">
+
+            <ImageView
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:src="@drawable/me_arrow_img" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/me_setting_img" />
+
+
+        </LinearLayout>
+
+
+        <!-- 个人头像  -->
+        <RelativeLayout
+            android:layout_width="@dimen/x177"
+            android:layout_height="@dimen/y177"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/y20"
+            android:layout_marginLeft="@dimen/x40"
+            android:background="@drawable/white_bg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x20"
+                android:background="@drawable/common" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- 名字 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x40"
+        android:text="名字"
+        android:textColor="@color/color_333333"
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="18sp"
-        android:text="第5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x40"
+        android:text="缤橙号：125648971"
+        android:textColor="@color/color_666666"
+        android:textSize="12sp" />
+
 
 </LinearLayout>

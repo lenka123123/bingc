@@ -39,7 +39,6 @@ public class FirstFragment extends BaseFragment implements BaseNetListener {
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recycler_head.setLayoutManager(linearLayoutManager);
 
-
         selectData.add("热点");
         selectData.add("美食");
         selectData.add("酒店");
@@ -53,7 +52,7 @@ public class FirstFragment extends BaseFragment implements BaseNetListener {
         recycler_head.setAdapter(selectAdapter);
 
 
-//       XTabLayout tabLayout = (XTabLayout) findViewById(R.id.xTablayout);
+//  XTabLayout tabLayout = (XTabLayout) findViewById(R.id.xTablayout);
 
     }
 
@@ -64,7 +63,6 @@ public class FirstFragment extends BaseFragment implements BaseNetListener {
                 paramsSingle, this, "1001", HomeDataList.class);
 
     }
-
 
     @Override
     public void success(String flag, Object data) {

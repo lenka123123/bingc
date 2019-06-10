@@ -1,7 +1,7 @@
-package bcms.monite.cn.bingchen.main;
+package bcms.monite.cn.bingchen.me;
 
 import android.widget.TextView;
-
+import bcms.monite.cn.bingchen.main.BaseFragment;
 import bcms.monite.cn.bingchen.R;
 
 public class FifthFragment extends BaseFragment {
