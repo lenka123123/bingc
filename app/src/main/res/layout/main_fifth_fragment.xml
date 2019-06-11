@@ -46,6 +46,7 @@
 
         <!-- 个人头像  -->
         <RelativeLayout
+            android:id="@+id/login_img"
             android:layout_width="@dimen/x177"
             android:layout_height="@dimen/y177"
             android:layout_alignParentBottom="true"
@@ -78,6 +79,109 @@
         android:text="缤橙号：125648971"
         android:textColor="@color/color_666666"
         android:textSize="12sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_marginBottom="@dimen/y26"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginRight="@dimen/x40"
+        android:layout_marginTop="@dimen/y16"
+        android:background="@color/item_line" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginRight="@dimen/x60"
+
+        android:text="我是最爱你的小洋，大家快来看我的个人主页，
+来关注我吧，我会定期发布一些有趣的视频" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y75"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginRight="@dimen/x40"
+        android:layout_marginTop="@dimen/y30" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginRight="@dimen/x40"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="0获赞"
+            android:textColor="@color/color_000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0关注"
+            android:textColor="@color/color_000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="0粉丝"
+            android:textColor="@color/color_000000"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <!--  作品   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginRight="@dimen/x40"
+        android:layout_marginTop="@dimen/y50"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="作品78"
+            android:textColor="@color/color_ff8833"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x65"
+            android:gravity="center"
+            android:text="动态70"
+            android:textColor="@color/color_333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x65"
+            android:text="喜欢2413"
+            android:textColor="@color/color_333333"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- 列表  -->
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

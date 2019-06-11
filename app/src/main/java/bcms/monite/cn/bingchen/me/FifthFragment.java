@@ -1,8 +1,13 @@
 package bcms.monite.cn.bingchen.me;
 
+import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
+
 import bcms.monite.cn.bingchen.main.BaseFragment;
 import bcms.monite.cn.bingchen.R;
+import bcms.monite.cn.bingchen.me.activity.LoginActivity;
+import butterknife.OnClick;
 
 public class FifthFragment extends BaseFragment {
 
@@ -21,5 +26,10 @@ public class FifthFragment extends BaseFragment {
     @Override
     public void loadData() {
 
+    }
+
+    @OnClick({R.id.login_img})
+    public void onClick(View view) {
+        getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 }
