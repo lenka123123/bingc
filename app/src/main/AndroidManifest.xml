@@ -33,6 +33,8 @@
         </activity>
         <activity android:name=".main.HomeActivity" />
         <activity android:name=".me.activity.LoginActivity" />
+        <activity android:name=".me.activity.LoginForPwdActivity" />
+        <activity android:name=".me.activity.ForgetPwdActivity" />
     </application>
 
 </manifest>

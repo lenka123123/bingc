@@ -15,17 +15,21 @@ import bcms.monite.cn.bingchen.me.model.LoginBean;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity implements BaseNetListener {
+public class ForgetPwdActivity extends BaseActivity implements BaseNetListener {
 
     @BindView(R.id.code)
     EditText code;
     @BindView(R.id.phone)
     EditText phone;
+    @BindView(R.id.new_pwd)
+    EditText new_pwd;
+    @BindView(R.id.new_pwd_again)
+    EditText new_pwd_again;
 
 
     @Override
     public int initLayoutResID() {
-        return R.layout.activity_login;
+        return R.layout.activity_forget_pwd;
     }
 
     @Override
@@ -49,25 +53,25 @@ public class LoginActivity extends BaseActivity implements BaseNetListener {
 
         TreeMap<String, Object> paramsSingle = new TreeMap<String, Object>();
         paramsSingle.put("mobilePhone", phone.getText().toString().trim());
-        NetUtils.getInstance().post("/my/login/getLoginVerifyCode.action",
+        NetUtils.getInstance().post("/my/login/getForgetPasswordVerifyCode.action",
                 paramsSingle, this, "001");
 
     }
 
 
     @Override
-    @OnClick({R.id.get_code, R.id.go_login, R.id.pwd_login})
+    @OnClick({R.id.get_code, R.id.commit})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.get_code:
                 getCode();
                 break;
-            case R.id.go_login:  //验证码登录
-                login(false, phone.getText().toString().trim(),
-                        "", "", code.getText().toString().trim());
-                break;
-            case R.id.pwd_login:
-                startActivity(new Intent(LoginActivity.this, LoginForPwdActivity.class));
+            case R.id.commit:
+
+
+                commit();
+
+
                 break;
             default:
                 break;
@@ -75,28 +79,18 @@ public class LoginActivity extends BaseActivity implements BaseNetListener {
 
     }
 
-    private void login(boolean isThirdPlatform, String mobilePhone, String thirdPlatformId,
-                       String thirdPlatformType, String verifyCode) {
+    private void commit() {
         TreeMap<String, Object> paramsSingle = new TreeMap<String, Object>();
 
         if (!checkParams()) {
             return;
         }
-        paramsSingle.put("isThirdPlatform", isThirdPlatform);
-        if (!mobilePhone.equals("")) {
-            paramsSingle.put("mobilePhone", mobilePhone);
-        }
-        if (!thirdPlatformId.equals("")) {
-            paramsSingle.put("thirdPlatformId", thirdPlatformId);
-        }
-        if (!thirdPlatformType.equals("")) {
-            paramsSingle.put("thirdPlatformType", thirdPlatformType);//第三方平台类型-1.微信 2.QQ 3微博
-        }
-        if (!verifyCode.equals("")) {
-            paramsSingle.put("verifyCode", verifyCode);
-        }
+        paramsSingle.put("mobilePhone", phone.getText().toString().trim());
+        paramsSingle.put("verifyCode", code.getText().toString().trim());
+        paramsSingle.put("passowrd", new_pwd_again.getText().toString().trim());
 
-        NetUtils.getInstance().postObj("/my/login/verifyCodeLogin.action",
+
+        NetUtils.getInstance().postObj("/my/login/forgetPasswordLogin.action",
                 paramsSingle, this, "002", LoginBean.class);
     }
 
@@ -107,6 +101,14 @@ public class LoginActivity extends BaseActivity implements BaseNetListener {
         }
         if (code.getText().toString().trim().length() < 2) {
             ToastUtils.getInstance().showShortToast("请输入短信验证码");
+            return false;
+        }
+        if (!new_pwd.getText().toString().trim().equals(new_pwd_again.getText().toString().trim())) {
+            ToastUtils.getInstance().showShortToast("两次密码不一致");
+            return false;
+        }
+        if (new_pwd_again.getText().toString().trim().length() < 6) {
+            ToastUtils.getInstance().showShortToast("密码必须大于6位");
             return false;
         }
 
