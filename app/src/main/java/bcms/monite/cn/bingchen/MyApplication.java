@@ -2,6 +2,7 @@ package bcms.monite.cn.bingchen;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.SerializableDiskConverter;
@@ -23,11 +24,13 @@ public class MyApplication extends Application {
     private final String qichengpublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVZIPpL0+AkYw+jUhgfVi1LqrKvJ16mo4TU8IZzOewyMBTWrCBHdSPLRvpXeSCuN5tW77PTqxP5AC+CVxkYNkddu5DUiAK9mdekjojBgJqxzq2kxx99jXhHaskJzqqlGhJatXq5RoQL7yaO/01xizvoxOMR2EL3Yh5Snp7y2OdlwIDAQAB";
     private String encryptkey;
     public static String aEsKey;
+    public static Context mContext;
 
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext=this;
         EasyHttp.init(this);//默认初始化
         aEsKey = EnCodeUtils.getInstance().getStringRandom(16);
         initHttp();
@@ -89,7 +92,7 @@ public class MyApplication extends Application {
                 //.setHostnameVerifier(new SafeHostnameVerifier())
                 //.addConverterFactory(GsonConverterFactory.create(gson))//本框架没有采用Retrofit的Gson转化，所以不用配置
 //                .addCommonHeaders(headers)//设置全局公共头
-//                .addCommonParams(params)//设置全局公共参数
+//            .addCommonParams(params)//设置全局公共参数
                 //.addNetworkInterceptor(new NoCacheInterceptor())//设置网络拦截器
                 //.setCallFactory()//局设置Retrofit对象Factory
                 //.setCookieStore()//设置cookie

@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y60"
         android:layout_marginLeft="@dimen/x40"
-        android:layout_marginRight="@dimen/x40"
         android:layout_marginTop="@dimen/y20"
+        android:layout_marginRight="@dimen/x40"
         android:orientation="horizontal">
 
         <ImageView
@@ -64,11 +64,14 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x60"
             android:background="@null"
             android:hint="请输入手机号码"
+            android:inputType="number"
+            android:maxLength="11"
             android:minWidth="@dimen/x300"
             android:textColor="@color/color_000000"
             android:textColorHint="@color/color_666666" />
@@ -80,8 +83,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y1"
         android:layout_marginLeft="@dimen/x40"
-        android:layout_marginRight="@dimen/x40"
         android:layout_marginTop="@dimen/y10"
+        android:layout_marginRight="@dimen/x40"
         android:background="@color/color_000000" />
 
 
@@ -95,10 +98,11 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/code"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+              android:maxLength="8"
             android:layout_weight="1"
-
             android:background="@null"
             android:hint="短信验证码"
             android:textColor="@color/color_000000"
@@ -113,6 +117,7 @@
             android:textSize="30sp" />
 
         <TextView
+            android:id="@+id/get_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="bottom"
@@ -128,11 +133,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y1"
         android:layout_marginLeft="@dimen/x40"
-        android:layout_marginRight="@dimen/x40"
         android:layout_marginTop="@dimen/y10"
+        android:layout_marginRight="@dimen/x40"
         android:background="@color/color_000000" />
 
     <TextView
+        android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x40"
@@ -141,11 +147,12 @@
         android:textSize="12sp" />
 
     <TextView
+        android:id="@+id/go_login"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y80"
         android:layout_marginLeft="@dimen/x120"
-        android:layout_marginRight="@dimen/x120"
         android:layout_marginTop="@dimen/y60"
+        android:layout_marginRight="@dimen/x120"
         android:background="@color/color_ff8833"
         android:gravity="center"
         android:text="登录"
@@ -165,8 +172,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y1"
         android:layout_marginLeft="@dimen/x120"
-        android:layout_marginRight="@dimen/x120"
         android:layout_marginTop="@dimen/y40"
+        android:layout_marginRight="@dimen/x120"
         android:background="@color/color_000000" />
 
     <TextView
@@ -179,8 +186,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/y40">
+        android:layout_marginTop="@dimen/y40"
+        android:gravity="center">
 
         <ImageView
             android:layout_width="@dimen/x60"

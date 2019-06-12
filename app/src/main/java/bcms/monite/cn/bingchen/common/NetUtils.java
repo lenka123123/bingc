@@ -10,6 +10,7 @@ import com.zhouyou.http.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.TreeMap;
 
+import bcms.monite.cn.bingchen.MyApplication;
 import bcms.monite.cn.bingchen.home.model.HomeDataList;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -32,8 +33,18 @@ public class NetUtils<T> {
     public void post(String url, TreeMap paramsMap, final BaseNetListener listener, final String flag) {
 
         TreeMap<String, Object> commonParams = new TreeMap<String, Object>();
-        commonParams.put("request", AESUtils.encrypt(gson.toJson(paramsMap)));
-        final RequestBody requestBody = RequestBody.create(JSON, gson.toJson(commonParams));
+        commonParams.put("appVersion", CommonUtil.getVersion(MyApplication.mContext));
+        commonParams.put("deviceId", CommonUtil.getAndroidId(MyApplication.mContext));
+        commonParams.put("deviceSystem", "2");
+        commonParams.put("requestId", EnCodeUtils.getInstance().getStringRandom(9));
+        commonParams.put("requestTimestamp", TimeUtils.getNowDate());
+
+        paramsMap.put("base", commonParams);
+        Log.i("decryptString请求参数====", "postObj: " + gson.toJson(paramsMap));
+
+        TreeMap<String, Object> commonParamss = new TreeMap<String, Object>();
+        commonParamss.put("request", AESUtils.encrypt(gson.toJson(paramsMap)));
+        final RequestBody requestBody = RequestBody.create(JSON, gson.toJson(commonParamss));
 
         EasyHttp.post(url)
                 .readTimeOut(30 * 1000)//局部定义读超时
@@ -56,7 +67,7 @@ public class NetUtils<T> {
                             listener.success(flag, data);
                         } else {
                             // TODO: 2019/6/9 0009
-                            listener.fail(flag,  "");
+                            listener.fail(flag, "");
                         }
                     }
                 });
@@ -67,8 +78,17 @@ public class NetUtils<T> {
                         final String flag, final T t) {
 
         TreeMap<String, Object> commonParams = new TreeMap<String, Object>();
-        commonParams.put("request", AESUtils.encrypt(gson.toJson(paramsMap)));
-        final RequestBody requestBody = RequestBody.create(JSON, gson.toJson(commonParams));
+        commonParams.put("appVersion", CommonUtil.getVersion(MyApplication.mContext));
+        commonParams.put("deviceId", CommonUtil.getAndroidId(MyApplication.mContext));
+        commonParams.put("deviceSystem", "2");
+        commonParams.put("requestId", EnCodeUtils.getInstance().getStringRandom(9));
+        commonParams.put("requestTimestamp", TimeUtils.getNowDate());
+
+        paramsMap.put("base", commonParams);
+        Log.i("decryptString请求参数====", "postObj: " + gson.toJson(paramsMap));
+        TreeMap<String, Object> commonParamss = new TreeMap<String, Object>();
+        commonParamss.put("request", AESUtils.encrypt(gson.toJson(paramsMap)));
+        final RequestBody requestBody = RequestBody.create(JSON, gson.toJson(commonParamss));
 
         EasyHttp.post(url)
                 .readTimeOut(30 * 1000)//局部定义读超时
@@ -86,8 +106,8 @@ public class NetUtils<T> {
 
                     @Override
                     public void onSuccess(String response) {
-                      T data =   gson.fromJson(response, (Class<T>) t);
-                        listener.success(flag,   data);
+                        T data = gson.fromJson(response, (Class<T>) t);
+                        listener.success(flag, data);
 //                        if (data.getCode().equals("200")) {
 //                            listener.success(flag, data);
 //                        } else {

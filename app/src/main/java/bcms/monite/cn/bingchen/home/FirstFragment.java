@@ -68,7 +68,7 @@ public class FirstFragment extends BaseFragment implements BaseNetListener {
     public void success(String flag, Object data) {
         if (data instanceof HomeDataList) {
             HomeDataList list = (HomeDataList) data;
-            Log.i(TAG, "success===" + list.getData().getHomeCommendVideoVOList().size());
+//            Log.i(TAG, "success===" + list.getData().getHomeCommendVideoVOList().size());
 
         }
     }

@@ -1,12 +1,11 @@
 package bcms.monite.cn.bingchen.config;
 
 
-import android.os.Environment;
+import android.content.Context;
 
-import java.io.File;
+import bcms.monite.cn.bingchen.MyApplication;
 
 public class Constants {
-
 
     /***
      * 首页

@@ -28,6 +28,9 @@ import android.widget.PopupWindow;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * Created by Administrator on 2018.02.24.
  */
@@ -41,7 +44,7 @@ public abstract class BaseActivity extends CheckPermissionsActivity implements V
     protected int layoutResID;
     protected static Activity context;
     public Bundle savedInstanceState;
-
+    protected Unbinder unbinder;
 
 
     @Override
@@ -52,7 +55,7 @@ public abstract class BaseActivity extends CheckPermissionsActivity implements V
         context = this;
 
         setContentView(initLayoutResID());
-
+        unbinder = ButterKnife.bind(this);
         ViewGroup contentFrameLayout = findViewById(Window.ID_ANDROID_CONTENT);
         View parentView = contentFrameLayout.getChildAt(0);
         if (parentView != null && Build.VERSION.SDK_INT >= 14) {
@@ -178,5 +181,13 @@ public abstract class BaseActivity extends CheckPermissionsActivity implements V
         mInputMethodManager
                 .showSoftInput(view, InputMethodManager.SHOW_FORCED);
     }
+
+
+    @Override
+    public void onDestroy() {
+        unbinder.unbind();
+        super.onDestroy();
+    }
+
 
 }
