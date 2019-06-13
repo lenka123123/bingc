@@ -15,22 +15,25 @@ import bcms.monite.cn.bingchen.me.model.LoginBean;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginForPwdActivity extends BaseActivity implements BaseNetListener {
+public class EditInfoActivity extends BaseActivity implements BaseNetListener {
 
+    @BindView(R.id.code)
+    EditText code;
     @BindView(R.id.phone)
     EditText phone;
-    @BindView(R.id.pwd)
-    EditText pwd;
 
 
     @Override
     public int initLayoutResID() {
-        return R.layout.activity_login_for_pwd;
+        return R.layout.activity_login;
     }
 
     @Override
     protected void initData() {
+
+
     }
+
 
     @Override
     protected void initView() {
@@ -53,33 +56,47 @@ public class LoginForPwdActivity extends BaseActivity implements BaseNetListener
 
 
     @Override
-    @OnClick({R.id.forget_pwd, R.id.go_login})
+    @OnClick({R.id.get_code, R.id.go_login, R.id.pwd_login})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.forget_pwd:
-                startActivity(new Intent(LoginForPwdActivity.this, ForgetPwdActivity.class));
+            case R.id.get_code:
+                getCode();
                 break;
-            case R.id.go_login:
-                login();
+            case R.id.go_login:  //验证码登录
+                login(false, phone.getText().toString().trim(),
+                        "", "", code.getText().toString().trim());
+                break;
+            case R.id.pwd_login:
+                startActivity(new Intent(EditInfoActivity.this, LoginForPwdActivity.class));
                 break;
             default:
                 break;
         }
+
     }
 
-    private void login() {
+    private void login(boolean isThirdPlatform, String mobilePhone, String thirdPlatformId,
+                       String thirdPlatformType, String verifyCode) {
         TreeMap<String, Object> paramsSingle = new TreeMap<String, Object>();
 
         if (!checkParams()) {
             return;
         }
+        paramsSingle.put("isThirdPlatform", isThirdPlatform);
+        if (!mobilePhone.equals("")) {
+            paramsSingle.put("mobilePhone", mobilePhone);
+        }
+        if (!thirdPlatformId.equals("")) {
+            paramsSingle.put("thirdPlatformId", thirdPlatformId);
+        }
+        if (!thirdPlatformType.equals("")) {
+            paramsSingle.put("thirdPlatformType", thirdPlatformType);//第三方平台类型-1.微信 2.QQ 3微博
+        }
+        if (!verifyCode.equals("")) {
+            paramsSingle.put("verifyCode", verifyCode);
+        }
 
-
-        paramsSingle.put("mobilePhone", phone.getText().toString().trim());
-        paramsSingle.put("password", pwd.getText().toString().trim());
-
-
-        NetUtils.getInstance().postObj("/my/login/passwordLogin.action",
+        NetUtils.getInstance().postObj("/my/login/verifyCodeLogin.action",
                 paramsSingle, this, "002", LoginBean.class);
     }
 
@@ -88,11 +105,10 @@ public class LoginForPwdActivity extends BaseActivity implements BaseNetListener
             ToastUtils.getInstance().showShortToast("请输入正确的手机号码");
             return false;
         }
-        if (pwd.getText().toString().trim().length() < 6) {
-            ToastUtils.getInstance().showShortToast("密码不小于6位");
+        if (code.getText().toString().trim().length() < 2) {
+            ToastUtils.getInstance().showShortToast("请输入短信验证码");
             return false;
         }
-
 
         return true;
     }
@@ -106,6 +122,9 @@ public class LoginForPwdActivity extends BaseActivity implements BaseNetListener
         if (flag.equals("002")) {
             LoginBean bean = (LoginBean) data;
             Log.i("getMessage", "success: " + bean.getMessage());
+            startActivity(new Intent(EditInfoActivity.this, LoginForPwdActivity.class));
+
+
         }
 
     }

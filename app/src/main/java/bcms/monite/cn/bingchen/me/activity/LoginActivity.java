@@ -122,8 +122,9 @@ public class LoginActivity extends BaseActivity implements BaseNetListener {
         if (flag.equals("002")) {
             LoginBean bean = (LoginBean) data;
             Log.i("getMessage", "success: " + bean.getMessage());
-        }
+            startActivity(new Intent(LoginActivity.this, EditInfoActivity.class));
 
+        }
     }
 
     @Override

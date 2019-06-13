@@ -35,6 +35,7 @@
         <activity android:name=".me.activity.LoginActivity" />
         <activity android:name=".me.activity.LoginForPwdActivity" />
         <activity android:name=".me.activity.ForgetPwdActivity" />
+        <activity android:name=".me.activity.EditInfoActivity" />
     </application>
 
 </manifest>
