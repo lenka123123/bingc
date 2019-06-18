@@ -83,28 +83,4 @@
         android:layout_height="wrap_content" />
 
 
-    <!--<com.androidkun.xtablayout.XTabLayout-->
-    <!--android:id="@+id/xTablayout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/y120"-->
-    <!--android:background="@color/white"-->
-    <!--android:paddingBottom="@dimen/y30"-->
-    <!--android:paddingTop="@dimen/y30"-->
-    <!--app:xTabBackgroundColor="@color/white"-->
-    <!--app:xTabDisplayNum="7"-->
-    <!--app:xTabDividerColor="#333"-->
-    <!--app:xTabDividerHeight="15dp"-->
-    <!--app:xTabIndicatorColor="#FFF"-->
-    <!--app:xTabIndicatorHeight="1dp"-->
-    <!--app:xTabIndicatorWidth="@dimen/x60"-->
-    <!--app:xTabMode="scrollable"-->
-    <!--app:xTabSelectedBackgroundColor="@color/colorF72B"-->
-    <!--app:xTabSelectedTextColor="#F63F1A"-->
-    <!--app:xTabSelectedTextSize="15sp"-->
-    <!--app:xTabTextBold="false"-->
-    <!--app:xTabTextColor="#333"-->
-    <!--app:xTabTextSelectedBold="false"-->
-    <!--app:xTabTextSize="15sp" />-->
-
-
 </LinearLayout>

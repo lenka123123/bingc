@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.TreeMap;
 
@@ -37,6 +38,8 @@ public class LoginActivity extends BaseActivity implements BaseNetListener {
 
     @Override
     protected void initView() {
+
+        Toast.makeText(this,"123",Toast.LENGTH_SHORT).show();
 
     }
 

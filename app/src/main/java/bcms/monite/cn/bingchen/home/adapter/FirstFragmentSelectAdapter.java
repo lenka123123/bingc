@@ -10,13 +10,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import bcms.monite.cn.bingchen.R;
+import bcms.monite.cn.bingchen.home.model.GetHomeSortList;
 
 public class FirstFragmentSelectAdapter extends RecyclerView.Adapter<FirstFragmentSelectAdapter.ViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<String> mDatas = null;
+    private List<GetHomeSortList.DataBean.VideoKindDicVOListBean>  mDatas = null;
 
-    public FirstFragmentSelectAdapter(Context context, List<String> data) {
+    public FirstFragmentSelectAdapter(Context context,List<GetHomeSortList.DataBean.VideoKindDicVOListBean>  data) {
         mInflater = LayoutInflater.from(context);
         this.mDatas = data;
     }
@@ -29,7 +30,7 @@ public class FirstFragmentSelectAdapter extends RecyclerView.Adapter<FirstFragme
         TextView mTxt;
     }
 
-    public void updateData(List<String> data) {
+    public void updateData(List<GetHomeSortList.DataBean.VideoKindDicVOListBean>   data) {
         if (mDatas != null) {
             mDatas.clear();
         }
@@ -61,6 +62,6 @@ public class FirstFragmentSelectAdapter extends RecyclerView.Adapter<FirstFragme
      */
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, final int i) {
-        viewHolder.mTxt.setText(mDatas.get(i));
+        viewHolder.mTxt.setText(mDatas.get(i).getKindName());
     }
 }

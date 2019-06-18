@@ -14,6 +14,7 @@ import bcms.monite.cn.bingchen.common.BaseNetListener;
 import bcms.monite.cn.bingchen.common.NetUtils;
 import bcms.monite.cn.bingchen.config.Constants;
 import bcms.monite.cn.bingchen.home.adapter.FirstFragmentSelectAdapter;
+import bcms.monite.cn.bingchen.home.model.GetHomeSortList;
 import bcms.monite.cn.bingchen.home.model.HomeDataList;
 import bcms.monite.cn.bingchen.main.BaseFragment;
 import butterknife.BindView;
@@ -39,38 +40,43 @@ public class FirstFragment extends BaseFragment implements BaseNetListener {
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recycler_head.setLayoutManager(linearLayoutManager);
 
-        selectData.add("热点");
-        selectData.add("美食");
-        selectData.add("酒店");
-        selectData.add("奇迹");
-        selectData.add("热点");
-        selectData.add("美食");
-        selectData.add("酒店");
-        selectData.add("奇迹");
-        //设置适配器
-        selectAdapter = new FirstFragmentSelectAdapter(getActivity(), selectData);
-        recycler_head.setAdapter(selectAdapter);
-
-
-//  XTabLayout tabLayout = (XTabLayout) findViewById(R.id.xTablayout);
-
     }
 
     @Override
     public void loadData() {
         TreeMap<String, Object> paramsSingle = new TreeMap<String, Object>();
+        NetUtils.getInstance().postObj("/home/Feature/getVideoKindList.action",
+                paramsSingle, this, "001", GetHomeSortList.class);
+
+
         NetUtils.getInstance().postObj(Constants.getCommendVideoList,
-                paramsSingle, this, "1001", HomeDataList.class);
+                paramsSingle, this, "002", HomeDataList.class);
 
     }
 
     @Override
     public void success(String flag, Object data) {
-        if (data instanceof HomeDataList) {
-            HomeDataList list = (HomeDataList) data;
-//            Log.i(TAG, "success===" + list.getData().getHomeCommendVideoVOList().size());
+        Log.i(TAG, "success: ww " + flag);
+        switch (flag) {
+            case "001":
+                if (data instanceof GetHomeSortList) {
+                    GetHomeSortList list = (GetHomeSortList) data;
+                    //设置适配器
+                    Log.i(TAG, "success: ss" + ((GetHomeSortList) data).getCode());
+                    selectAdapter = new FirstFragmentSelectAdapter(getActivity(), list.getData().getVideoKindDicVOList());
+                    recycler_head.setAdapter(selectAdapter);
+
+                }
+                break;
+            case "002":
+                if (data instanceof HomeDataList) {
+                    HomeDataList list = (HomeDataList) data;
+
+                }
+                break;
 
         }
+
     }
 
     @Override
