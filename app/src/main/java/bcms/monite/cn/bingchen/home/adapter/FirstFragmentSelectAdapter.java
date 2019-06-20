@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import bcms.monite.cn.bingchen.R;
@@ -15,11 +16,11 @@ import bcms.monite.cn.bingchen.home.model.GetHomeSortList;
 public class FirstFragmentSelectAdapter extends RecyclerView.Adapter<FirstFragmentSelectAdapter.ViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<GetHomeSortList.DataBean.VideoKindDicVOListBean>  mDatas = null;
+    private List<GetHomeSortList.DataBean.VideoKindDicVOListBean>  mDatas = new ArrayList<>();
 
-    public FirstFragmentSelectAdapter(Context context,List<GetHomeSortList.DataBean.VideoKindDicVOListBean>  data) {
+    public FirstFragmentSelectAdapter(Context context ) {
         mInflater = LayoutInflater.from(context);
-        this.mDatas = data;
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,9 +32,7 @@ public class FirstFragmentSelectAdapter extends RecyclerView.Adapter<FirstFragme
     }
 
     public void updateData(List<GetHomeSortList.DataBean.VideoKindDicVOListBean>   data) {
-        if (mDatas != null) {
-            mDatas.clear();
-        }
+
         mDatas.addAll(data);
         notifyDataSetChanged();
     }

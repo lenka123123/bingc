@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bcms.monite.cn.bingchen.R;
+import bcms.monite.cn.bingchen.common.customview.ViewPagerSlide;
 import bcms.monite.cn.bingchen.config.Constants;
 import bcms.monite.cn.bingchen.home.FirstFragment;
 import butterknife.BindColor;
@@ -46,7 +47,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     RelativeLayout mRelativeLayout[];
 
     @BindView(R.id.view_pager)
-    ViewPager mViewPager;
+    ViewPagerSlide mViewPager;
 
     @BindView(R.id.main_tab)
     LinearLayout mainTab;
