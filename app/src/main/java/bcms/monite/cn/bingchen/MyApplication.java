@@ -16,15 +16,6 @@ import bcms.monite.cn.bingchen.common.TimeUtils;
 import bcms.monite.cn.bingchen.config.Constants;
 
 public class MyApplication extends Application {
-    /**
-     * dong tij
-     *
-     *
-     *
-     *
-     */
-
-
     // https://blog.csdn.net/kzcming/article/details/80103950
 
     private final  String baseUrl = "http://bcms.monite.cn:9999/";

@@ -48,7 +48,7 @@ public class EditInfoActivity extends BaseActivity implements BaseNetListener, O
 
     @Override
     protected void initData() {
-
+        // TODO: 2019/6/21
 
     }
 
