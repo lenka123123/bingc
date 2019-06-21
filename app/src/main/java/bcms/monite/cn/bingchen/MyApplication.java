@@ -17,6 +17,8 @@ import bcms.monite.cn.bingchen.config.Constants;
 
 public class MyApplication extends Application {
 
+   // TODO
+
 
     // https://blog.csdn.net/kzcming/article/details/80103950
 
