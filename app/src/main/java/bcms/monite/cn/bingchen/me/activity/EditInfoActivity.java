@@ -89,16 +89,14 @@ public class EditInfoActivity extends BaseActivity implements BaseNetListener, O
                 Date date = new Date();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
                 String format1 = format.format(date);
-                TimeSelector timeSelector = new TimeSelector(Edi.this, new TimeSelector.ResultHandler() {
-                    @Override
-                    public void handle(String time) {
-                        t_time.setText(time);
-                    }
-                }, format1, "2050-1-1 24:00");
-                timeSelector.show();
+//                TimeSelector timeSelector = new TimeSelector(EditInfoActivity.this, new TimeSelector.ResultHandler() {
+//                    @Override
+//                    public void handle(String time) {
+//                        t_time.setText(time);
+//                    }
+//                }, format1, "2050-1-1 24:00");
+//                timeSelector.show();
 
-        }
-    });
                 break;
 
 
