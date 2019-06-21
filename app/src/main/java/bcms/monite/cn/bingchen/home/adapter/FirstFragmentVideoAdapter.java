@@ -42,7 +42,9 @@ public class FirstFragmentVideoAdapter extends RecyclerView.Adapter<FirstFragmen
     }
 
     public void updateData(List<HomeDataList.DataBean.HomeCommendVideoVOListBean> data) {
-
+        if (data == null || data.size() < 0) {
+            return;
+        }
         mDatas.addAll(data);
         notifyDataSetChanged();
     }
@@ -78,7 +80,7 @@ public class FirstFragmentVideoAdapter extends RecyclerView.Adapter<FirstFragmen
         viewHolder.title.setText(mDatas.get(i).getUserNickName());
         Picasso.with(context).load(mDatas.get(i).getUserHeadImageUrl()).into(viewHolder.logo);
         Picasso.with(context).load(mDatas.get(i).getVideoPreviewImageUrl()).into(viewHolder.video_img);
-        viewHolder.dz_tv.setText(mDatas.get(i).getAchieveLoveCount()+"W");
+        viewHolder.dz_tv.setText(mDatas.get(i).getAchieveLoveCount() + "W");
 
 //        viewHolder.pl_tv = view.findViewById(R.id.pl_tv);
 

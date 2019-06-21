@@ -36,6 +36,7 @@
                 android:layout_weight="1" />
 
             <ImageView
+                android:id="@+id/setting"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/me_setting_img" />
